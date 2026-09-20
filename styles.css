@@ -125,7 +125,7 @@ img,picture{display:block}
 .path path{fill:none;stroke:var(--ink);stroke-width:1.1;vector-effect:non-scaling-stroke;opacity:.85}
 .node{position:absolute;transform:translate(-50%,-50%);font-size:1.1rem;line-height:1;color:var(--ink);pointer-events:none}
 
-@media (max-width:520px){
+/*@media (max-width:520px){
   .card{border-width:22px;padding:1rem .8rem 1.4rem}
   .timeline{grid-template-columns:1fr;--S:auto}
   .stop__body{justify-items:start}
@@ -137,3 +137,4 @@ img,picture{display:block}
   .stop__text{max-width:none;text-wrap:pretty}
   .path,.node{display:none}
   }
+*/
