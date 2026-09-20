@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bea y Josué · Invitación de boda</title>
+<meta name="theme-color" content="#1b3b60">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1 class="sr-only">Invitación de boda de Bea y Josué</h1>
+  <picture>
+    <source media="(max-aspect-ratio: 1/1)" srcset="media/imagen-11.webp">
+    <img src="media/imagen-12.webp" alt="Ilustración de la pareja dibujada como constelación en un cielo estrellado" width="1920" height="1080" fetchpriority="high">
+  </picture>
+  <a class="hero__cue" href="#pareja">Desliza</a>
+</header>
+
+<section class="photo" id="pareja" aria-label="Fotografía de los novios">
+  <picture>
+    <source media="(max-aspect-ratio: 1/1)" srcset="media/imagen-13.webp">
+    <img src="media/imagen-14.webp" alt="Los novios abrazados frente a un castillo de piedra, con la ciudad colorida al fondo" width="1920" height="1080" loading="lazy">
+  </picture>
+</section>
+
+<section class="envelope" id="sobre" aria-label="Sobre de la invitación">
+  <div class="scene" id="scene">
+    <picture class="scene__closed">
+      <source media="(max-aspect-ratio: 1/1)" srcset="media/imagen-15.webp">
+      <img src="media/imagen-16.webp" alt="Sobre azul marino con sello de cera dorado con las iniciales B y J, junto a un disco de vinil, rosas blancas e hortensias" width="1920" height="1080" loading="lazy">
+    </picture>
+    <picture class="scene__open" aria-hidden="true">
+      <source media="(max-aspect-ratio: 1/1)" srcset="media/imagen-17.webp">
+      <img src="media/imagen-18.webp" alt="" width="1920" height="1080" loading="lazy">
+    </picture>
+    <button class="seal" id="seal" type="button" aria-expanded="false" aria-controls="scene" aria-label="Abrir el sobre"></button>
+    <p class="scene__hint" id="hint">Toca el sello para abrir</p>
+    <p class="sr-only" aria-live="polite" id="live"></p>
+  </div>
+</section>
+
+<div class="navy-wrap navy">
+  <section class="family" aria-labelledby="fam-title">
+    <div class="torn torn--top" aria-hidden="true"></div>
+    <div class="family__in">
+    <h2 class="lead" id="fam-title">Con la bendición de<br>nuestros padres:</h2>
+    <div class="parents">
+      <figure class="parent">
+        <figcaption class="script">Padres de la novia</figcaption>
+        <div class="doily"><p>Maria de Jesús<br>Barrera Solis</p><p>Jesús Torres Delgado</p></div>
+      </figure>
+      <figure class="parent">
+        <figcaption class="script">Padres del novio</figcaption>
+        <div class="doily"><p>Marina Gomez Rosas</p><p>Javier Flores Ramirez</p></div>
+      </figure>
+    </div>
+    </div>
+    <div class="gyp gyp--l" aria-hidden="true"></div>
+    <div class="gyp gyp--r" aria-hidden="true"></div>
+  </section>
+
+  <section class="padrinos" aria-label="Padrinos de velación">
+    <div class="padrinos__in">
+    <p class="lead">y acompañados por nuestros</p>
+    <p class="script">Padrinos de velación</p>
+    <p class="padrinos__names"><span>Luis Arturo Gomez Rosas</span><span>Judith Orozco Ramírez</span></p>
+    </div>
+    <div class="torn torn--bottom" aria-hidden="true"></div>
+  </section>
+</div>
+
+<section class="places" aria-label="Ceremonia y recepción">
+  <figure class="arch-wrap">
+    <div class="arch">
+      <div class="arch__in arch__in--church">
+        <img class="arch__icon" src="media/imagen-19.png" alt="" width="173" height="161">
+        <p class="arch__text">Con la bendición de Dios y acompañados por nuestras familias, te invitamos a compartir el momento en que uniremos nuestras vidas en matrimonio.</p>
+        <a class="btn" href="#" data-map="church">UBICACIÓN</a>
+      </div>
+    </div>
+    <figcaption class="sr-only">Ceremonia religiosa</figcaption>
+  </figure>
+
+  <figure class="arch-wrap">
+    <div class="arch">
+      <div class="arch__in arch__in--venue">
+        <img class="arch__icon arch__icon--glasses" src="media/imagen-20.png" alt="" width="117" height="162">
+        <p class="arch__text">Acompáñanos a brindar por nuestro amor, nuestro futuro y todos los momentos que aún nos quedan por vivir.</p>
+        <a class="btn" href="#" data-map="venue">UBICACIÓN</a>
+      </div>
+    </div>
+    <figcaption class="sr-only">Recepción</figcaption>
+  </figure>
+</section>
+
+<section class="itinerary navy" aria-labelledby="it-title">
+  <div class="torn torn--top" aria-hidden="true"></div>
+  <div class="itinerary__body">
+    <div class="card">
+      <div class="card__gyp card__gyp--tr" aria-hidden="true"></div>
+      <div class="card__gyp card__gyp--bl" aria-hidden="true"></div>
+      <h2 id="it-title">ITINERARIO</h2>
+      <!-- EDITAR: horarios y textos de cada momento (en la muestra todos repiten el mismo texto) -->
+      <div class="tl">
+      <ol class="timeline">
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-21.png" alt=""></li>
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-22.png" alt=""></li>
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-23.png" alt=""></li>
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-24.png" alt=""></li>
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-25.png" alt=""></li>
+        <li class="stop"><div class="stop__body"><p class="stop__time">18:30 - 19:00</p><p class="stop__text">Recepción de invitados y bienvenida</p></div><img src="media/imagen-26.png" alt=""></li>
+      </ol>
+        <svg class="path" viewBox="0 0 100 441" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 43 70 C 51 70, 49 119, 57 119 C 49 119, 51 214, 43 214 C 51 214, 49 263, 57 263 C 49 263, 51 358, 43 358 C 51 358, 49 407, 57 407"/>
+        </svg>
+        <span class="node" aria-hidden="true" style="left:43%;top:15.9%">✦</span>
+        <span class="node" aria-hidden="true" style="left:57%;top:27%">✦</span>
+        <span class="node" aria-hidden="true" style="left:43%;top:48.5%">✦</span>
+        <span class="node" aria-hidden="true" style="left:57%;top:59.6%">✦</span>
+        <span class="node" aria-hidden="true" style="left:43%;top:81.2%">✦</span>
+        <span class="node" aria-hidden="true" style="left:57%;top:92.3%">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* EDITAR: enlaces de Google Maps para cada botón UBICACIÓN */
+  var MAPS = { church: "", venue: "" };
+
+  document.querySelectorAll("[data-map]").forEach(function(a){
+    var url = MAPS[a.getAttribute("data-map")];
+    if(url){ a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    else { a.addEventListener("click", function(e){ e.preventDefault(); }); }
+  });
+
+  var scene = document.getElementById("scene");
+  var seal = document.getElementById("seal");
+  var live = document.getElementById("live");
+  seal.addEventListener("click", function(){
+    scene.classList.add("is-open");
+    seal.setAttribute("aria-expanded","true");
+    live.textContent = "Sobre abierto. Acompáñanos a vivir este momento inolvidable.";
+  });
+})();
+</script>
+</body>
+</html>
