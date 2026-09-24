@@ -11,9 +11,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<audio id="bg-music" src="resources/arrullo de estrellas_mixdown.mp3.mpeg" loop></audio>
 
-<button id="music-toggle" aria-label="Reproducir música">🔇</button>
   
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <filter id="deckle" x="-3%" y="-2%" width="106%" height="104%">
@@ -347,6 +345,8 @@ document.body.addEventListener('click', function autoStart() {
   document.body.removeEventListener('click', autoStart);
 }, { once: true });
 </script>
+<audio id="bg-music" src="resources/arrullo de estrellas_mixdown.mp3.mpeg" loop></audio>
 
+<button id="music-toggle" aria-label="Reproducir música">🔇</button>
 </body>
 </html>
