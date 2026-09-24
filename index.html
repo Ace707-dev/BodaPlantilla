@@ -138,42 +138,113 @@
 <!-- 7. Confirmación -->
 <section class="rsvp" aria-labelledby="rsvp-t">
   <div class="gyp gyp--tl" aria-hidden="true"></div>
-  <div class="rsvp__card"><div class="rsvp__box">
-    <p id="rsvp-t">Para hacer de nuestra boda un momento inolvidable, necesitamos saber cuántos invitados nos acompañarán.<br>¿Nos confirmas tu asistencia?</p>
-    <button class="rsvp__btn" id="rsvp" onclick="document.getElementById('modal-rsvp').classList.add('open')">¡CONFIRMAR!</button>
-   
-  </div></div>
+  <div class="rsvp__card">
+    <div class="rsvp__box">
+      <p id="rsvp-t">
+        Para hacer de nuestra boda un momento inolvidable, necesitamos saber cuántos invitados nos acompañarán.<br>
+        ¿Nos confirmas tu asistencia?
+      </p>
+      <button class="rsvp__btn" id="rsvp" onclick="document.getElementById('modal-rsvp').classList.add('open')">
+        ¡CONFIRMAR!
+      </button>
+    </div>
+  </div>
   <div class="gyp gyp--br" aria-hidden="true"></div>
 </section>
+
 <div id="modal-rsvp" class="rsvp-overlay">
   <div class="rsvp-box">
-    <button class="rsvp-close" onclick="document.getElementById('modal-rsvp').classList.remove('open')">×</button>
+    <button class="rsvp-close" aria-label="Cerrar modal" onclick="document.getElementById('modal-rsvp').classList.remove('open')">&times;</button>
     <h2>Confirma tu asistencia</h2>
 
     <form id="rsvp-form">
-      <label>Nombre completo</label>
-      <input type="text" name="fullName" required maxlength="120">
+      <label for="fullName">Nombre completo</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Tu nombre y apellido" required maxlength="120">
 
       <label>¿Asistirás?</label>
       <div class="rsvp-radios">
-        <label><input type="radio" name="attending" value="true" checked> Sí</label>
-        <label><input type="radio" name="attending" value="false"> No</label>
+        <label><input type="radio" name="attending" value="true" checked onclick="toggleGuestCount(true)"> Sí</label>
+        <label><input type="radio" name="attending" value="false" onclick="toggleGuestCount(false)"> No</label>
       </div>
 
-      <label>Número de acompañantes</label>
-      <select name="guestCount">
-        <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
-      </select>
+      <div id="guest-count-wrapper">
+        <label for="guestCount">Número de acompañantes</label>
+        <select id="guestCount" name="guestCount">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
 
-      <label>Mensaje (opcional)</label>
-      <textarea name="message" maxlength="500"></textarea>
+      <label for="message">Mensaje (opcional)</label>
+      <textarea id="message" name="message" placeholder="Escribe unas palabras para los novios..." maxlength="500"></textarea>
 
       <button type="submit">Enviar confirmación</button>
-      <p id="rsvp-status"></p>
+      
+      <!-- Botón para descargar el evento .ics para el calendario -->
+      <button type="button" class="btn-ics" onclick="downloadICS()" style="margin-top: 10px; background-color: #6c757d;">
+        📅 Agendar en mi calendario (.ics)
+      </button>
+
+      <p id="rsvp-status" aria-live="polite"></p>
     </form>
   </div>
 </div>
 
+<script>
+  // Función para generar y descargar el archivo .ics
+  function downloadICS() {
+    const title = "Nuestra Boda";
+    const description = "¡Acompáñanos a celebrar nuestro gran día!";
+    const location = "Lugar del evento";
+    // Formato de fecha YYYYMMDDTHHMMSSZ (Ajusta con la fecha de tu evento)
+    const startDate = "20261120T180000Z"; 
+    const endDate = "20261121T020000Z";
+
+    const icsData = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nuestra Boda//Invitación//ES
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+LOCATION:${location}
+DTSTART:${startDate}
+DTEND:${endDate}
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'boda.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function toggleGuestCount(willAttend) {
+    const guestWrapper = document.getElementById('guest-count-wrapper');
+    if (guestWrapper) {
+      guestWrapper.style.display = willAttend ? 'block' : 'none';
+    }
+  }
+
+  document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('rsvp-status');
+    status.style.color = '#4b6b55';
+    status.textContent = '¡Gracias! Tu respuesta ha sido enviada con éxito.';
+    
+    setTimeout(() => {
+      document.getElementById('modal-rsvp').classList.remove('open');
+      status.textContent = '';
+      this.reset();
+    }, 2000);
+  });
+</script>
 <style>
   .rsvp-overlay {
     display: none;
@@ -317,6 +388,14 @@
   tick(); setInterval(tick, 1000);
 })();
 </script>
+<div style="background-color: #e9e3dc; padding: 20px 0; text-align: center;">
+  <img
+    src="todo-junto-cnadadoArtboard-15.png"
+    alt="Créditos"
+    style="max-width: 100%; width: 100%; height: auto;"
+  >
+</div>
+
 <div style="background-color: #e9e3dc; padding: 20px 0; text-align: center;">
   <img
     src="créditos 2.png"
