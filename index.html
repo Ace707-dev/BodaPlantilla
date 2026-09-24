@@ -317,7 +317,9 @@
   tick(); setInterval(tick, 1000);
 })();
 </script>
+<audio id="bg-music" src="resources/arrullo de estrellas_mixdown.mp3.mpeg" loop></audio>
 
+<button id="music-toggle" aria-label="Reproducir música">🔇</button>
 <script>
 const music = document.getElementById('bg-music');
 const toggleBtn = document.getElementById('music-toggle');
@@ -345,8 +347,6 @@ document.body.addEventListener('click', function autoStart() {
   document.body.removeEventListener('click', autoStart);
 }, { once: true });
 </script>
-<audio id="bg-music" src="resources/arrullo de estrellas_mixdown.mp3.mpeg" loop></audio>
 
-<button id="music-toggle" aria-label="Reproducir música">🔇</button>
 </body>
 </html>
