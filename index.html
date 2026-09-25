@@ -169,13 +169,7 @@
 
       <div id="guest-count-wrapper">
         <label for="guestCount">Número de acompañantes</label>
-        <select id="guestCount" name="guestCount">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
+        <input type="number" id="guestCount" name="guestCount" min="0" max="10" step="1" value="0" inputmode="numeric">
       </div>
 
       <label for="message">Mensaje (opcional)</label>
