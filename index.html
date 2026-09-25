@@ -144,7 +144,7 @@
         Para hacer de nuestra boda un momento inolvidable, necesitamos saber cuántos invitados nos acompañarán.<br>
         ¿Nos confirmas tu asistencia?
       </p>
-      <button class="rsvp__btn" id="rsvp" onclick="document.getElementById('modal-rsvp').classList.add('open')">
+      <button class="rsvp__btn" id="rsvp" onclick="document.getElementById('modal-rsvp').classList.add('open'); wakeUpBackend();">
         ¡CONFIRMAR!
       </button>
     </div>
@@ -232,18 +232,6 @@ END:VCALENDAR`;
     }
   }
 
-  document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const status = document.getElementById('rsvp-status');
-    status.style.color = '#4b6b55';
-    status.textContent = '¡Gracias! Tu respuesta ha sido enviada con éxito.';
-    
-    setTimeout(() => {
-      document.getElementById('modal-rsvp').classList.remove('open');
-      status.textContent = '';
-      this.reset();
-    }, 2000);
-  });
 </script>
 <style>
   .rsvp-overlay {
@@ -289,7 +277,19 @@ END:VCALENDAR`;
 </style>
 
 <script>
-  const API_URL = "http://localhost:3000"; 
+  // En local usa localhost:3000; en producción, reemplaza la URL de abajo
+  // por la URL real de tu backend desplegado (Railway/Render).
+  const API_URL = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? 'http://localhost:3000'
+    : 'https://bodabackend-zkkj.onrender.com';
+
+  let backendAwake = false;
+  function wakeUpBackend() {
+    if (backendAwake) return;
+    fetch(`${API_URL}/health`)
+      .then(() => { backendAwake = true; })
+      .catch(() => {});
+  }
 
   document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
     e.preventDefault();
