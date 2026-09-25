@@ -284,6 +284,8 @@ END:VCALENDAR`;
       .then(() => { backendAwake = true; })
       .catch(() => {});
   }
+  window.addEventListener('DOMContentLoaded', wakeUpBackend);
+
 
   document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
     e.preventDefault();
